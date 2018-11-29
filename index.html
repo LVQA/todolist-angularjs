@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>todolist</title>
+	<link rel="stylesheet" href="style.css">
+	<style>
+		.done{ text-decoration: line-through; }
+	</style>
+</head>
+<body ng-app="todolist">
+	<div ng-controller="todoctrl">
+		<h2>Bạn đang có {{todolenght()}} việc cần làm </h2>
+		<form name="frm">
+			<input type="text" name="newtodo" ng-model="newtodo" required>
+			<button type="button" ng-disabled="frm.$invalid" class="btn btn-primary" ng-click="addtodo()">add</button>
+		</form>
+		<button type="button" ng-click="clearcompleted()" class="btn btn-primary">hoàn thành</button>
+		<ul>
+			<li ng-repeat="todo in todos">
+			<input type="checkbox" ng-model="todo.done" name="" value="">
+			<span ng-class="{done:todo.done}">{{todo.text}}</span></li>
+		</ul>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.js"></script>
+	<script src="module.js"></script>
+</body>
+</html>
